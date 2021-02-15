@@ -1,0 +1,21 @@
+name: ECS Generation
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Example of simple template
+      uses: lejmr/amazon-ecs-render-task-definition@v1.0
+      with:
+        task-definition: simple-task-definition.json
+        values: values/DEV.json
+
+    - name: Example of simple template
+      uses: lejmr/amazon-ecs-render-task-definition@v1.0
+      with:
+        task-definition: complex-task-definition
+        values: values/PROD
