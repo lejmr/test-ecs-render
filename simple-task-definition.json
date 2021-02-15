@@ -1,7 +1,7 @@
 {
-    "family": "test"
+    "family": "test",
     {% if var|default("DEV") == "PROD" -%}
-    ,
-    "other": "{{ var2 }}"
+    "other": "{{ var2 }}",
     {% endif %}
+    "image": "{{ image|default('latest') }}"
 }

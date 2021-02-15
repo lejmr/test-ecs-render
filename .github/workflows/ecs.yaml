@@ -26,6 +26,17 @@ jobs:
       run: |
           cat task-definition-rendered.json
 
+    - name: Simple with external image
+      uses: lejmr/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: simple-task-definition.json
+        values: values/DEV.json
+        image: "lejmr/iredmail:latest"
+
+    - name: Show the simple template
+      run: |
+          cat task-definition-rendered.json
+
     - name: Example of simple template
       uses: lejmr/amazon-ecs-render-task-definition@v1
       with:
