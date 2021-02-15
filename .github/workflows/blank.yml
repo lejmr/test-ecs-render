@@ -28,7 +28,7 @@ jobs:
       - name: Amazon ECS Task Definition Jinja2 based renderer
         # You may pin to the exact commit or the version.
         # uses: lejmr/amazon-ecs-render-task-definition@62cd2ed042f051c9390891499de43baac37dddb5
-        uses: lejmr/amazon-ecs-render-task-definition@v1.0
+        uses: lejmr/amazon-ecs-render-task-definition@v1
         with:
           task-definition: simple-task-definition.json
           values: values/PROD
