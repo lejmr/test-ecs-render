@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Example of simple template
-      uses: lejmr/amazon-ecs-render-task-definition@v1
+      uses: lejmr/amazon-ecs-render-task-definition@v1.0.2
       with:
         task-definition: simple-task-definition.json
         values: values/DEV.json
@@ -19,7 +19,7 @@ jobs:
           cat task-definition-rendered.json
 
     - name: Example of simple template
-      uses: lejmr/amazon-ecs-render-task-definition@v1
+      uses: lejmr/amazon-ecs-render-task-definition@v1.0.2
       with:
         task-definition: complex-task-definition
         values: values/PROD
@@ -29,7 +29,7 @@ jobs:
           cat task-definition-rendered.json
 
     - name: Example of simple template
-      uses: lejmr/amazon-ecs-render-task-definition@v1
+      uses: lejmr/amazon-ecs-render-task-definition@v1.0.2
       with:
         task-definition: complex-task-definition
         values: values/DEV.json
