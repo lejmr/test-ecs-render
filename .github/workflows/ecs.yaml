@@ -9,13 +9,31 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Example of simple template
-      uses: lejmr/amazon-ecs-render-task-definition@v1.0
+      uses: lejmr/amazon-ecs-render-task-definition@v1
       with:
         task-definition: simple-task-definition.json
         values: values/DEV.json
 
+    - name: Show the simple template
+      run: |
+          cat task-definition-rendered.json
+
     - name: Example of simple template
-      uses: lejmr/amazon-ecs-render-task-definition@v1.0
+      uses: lejmr/amazon-ecs-render-task-definition@v1
       with:
         task-definition: complex-task-definition
         values: values/PROD
+    
+    - name: Show the complex / PROD template output
+      run: |
+          cat task-definition-rendered.json
+
+    - name: Example of simple template
+      uses: lejmr/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: complex-task-definition
+        values: values/DEV.json
+    
+    - name: Show the complex / DEV template output
+      run: |
+          cat task-definition-rendered.json
