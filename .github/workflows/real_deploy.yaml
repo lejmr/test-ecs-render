@@ -17,6 +17,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Generate configuration
+      id: render-web-container
       uses: lejmr/amazon-ecs-render-task-definition@v1
       with:
         task-definition: hello-world/task.json
@@ -25,3 +26,18 @@ jobs:
     - name: Show the simple template
       run: |
           cat task-definition-rendered.json
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.render-web-container.outputs.task-definition }}
+        service: hello-world
+        cluster: ecs-ingress-cluster
+
