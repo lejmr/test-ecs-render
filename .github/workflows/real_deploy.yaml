@@ -1,0 +1,27 @@
+name: Hello world 
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Generate configuration
+      uses: lejmr/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: hello-world/task.json
+        values: hello-world/values.yaml
+
+    - name: Show the simple template
+      run: |
+          cat task-definition-rendered.json

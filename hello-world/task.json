@@ -1,0 +1,28 @@
+{
+    "containerDefinitions": [
+      {
+        "portMappings": [
+          {
+            "hostPort": {{ host_port }},
+            "protocol": "tcp",
+            "containerPort": 80
+          }
+        ],
+        "cpu": 0,
+        "environment": [],
+        "memory": {{ memory }},
+        "memoryReservation": null,
+        "image": "containous/whoami",
+        "dockerLabels": {
+          "traefik.enable": "true"
+        },
+        "name": "whoami"
+      }
+    ],
+    "compatibilities": [
+      "EC2"
+    ],
+    "family": "{{ family_name }}",
+    "revision": 4,
+    "status": "ACTIVE"
+  }
